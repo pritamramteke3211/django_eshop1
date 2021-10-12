@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% load static %}
+
+{% block css %}{{block.super}} <link rel="stylesheet" href="{% static 'project/css/style.css' %}"> {% endblock css %}
+
+{% block body %} 
+
+<div class='container mt-5 mb-5'>
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3 px-2 " id='profile_menu'>
+            <a href="{% url 'dashboard' %}" class='btn btn-primary'>Profile</a><br>
+            <a href="{% url 'address' %}" >Address</a><br>
+            <a href="{% url 'orders' %}" >Orders</a>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-8 px-2 offset-1">
+            <h1>Dashboard Page</h1>
+            <h2>Welcome {{request.user}}</h2><br>
+            <br>
+            <a href="{% url 'changepass' %}" class='btn btn-primary'>Change Password</a>
+            <a href="{% url 'logout' %}" class='btn btn-warning'>Logout</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock body %}
+

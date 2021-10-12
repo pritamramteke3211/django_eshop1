@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}ProductView{% endblock title %}
+{% load static %}
+
+
+{% block body %} 
+
+<div class="container mx-5 mt-5 mb-5">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 px-2 text-center align-self-center">
+            <img src="{{product.product_image.url}}" alt=""  class="img-fluid img-thumbnail" id='product_view_img'>
+        </div>
+       
+        <div class="col-xs-5 col-sm-5 col-md-5 offset-1 px-2">
+            <h1>{{product.product_name}}</h1>
+            <hr>
+            <p>{{product.desc}}</p>
+            <h4>₹ {{product.price}}</h4>
+            <a class='btn btn-outline-danger cart me-2' id="pr{{product.product_id}}" href="{% url 'add_to_cart' product.product_id %}" >Add to Cart</a>
+
+            <a class='btn btn-outline-success cart' id="pr{{product.product_id}}" href="{% url 'buy_now' product.product_id %}" >Buy Now</a>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+

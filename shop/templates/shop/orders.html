@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}OrderPlaced{% endblock title %}
+{% load static %}
+{% load mathfilters %}
+
+{% block body %} 
+
+
+<div class='container mt-5 mb-5'>
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3 px-2 " id='profile_menu'>
+            <a href="{% url 'dashboard' %}" >Profile</a><br>
+            <a href="{% url 'address' %}" >Address</a><br>
+            <a href="{% url 'orders' %}" class='btn btn-primary'>Orders</a>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-8 px-2 offset-1">
+            <h2>Your Orders</h2>
+            <hr>
+            {% if orders %}
+                <table style="width:100%">
+                    <tr>
+                        <th>Order_Id</th>
+                        <th>Products</th>
+                        <th>Total Amount</th>
+                        <th>Order Date</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                        <th>Action</th>
+                    </tr>
+                    
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{order.id}}</td>
+                        <td>{{order.product_count}}</td>
+                        <td>{{order.total_amount}}</td>
+                        <td>{{order.order_date}}</td>
+                        <td>{{order.status}}</td>
+                        <td><a href="#" class='btn btn-info'>See Details</a></td>
+                        <td><a href="{% url 'cancel_order' order.id %}" class='btn btn-danger'>Cancel Order</a></td>
+                    
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            {% else %}
+                <div class="alert alert-info">
+                    No Orders Yet
+                </div>
+                
+            {% endif %}
+            <div class='mt-2'>
+                <a href="{% url 'home' %}" class='btn btn-primary'>Back To Home</a>
+                <a href="{% url 'dashboard' %}" class='btn btn-secondary'>Back To Profile</a><br>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock body %}
+

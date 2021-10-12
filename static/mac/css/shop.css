@@ -1,0 +1,105 @@
+/* ShopHomePage */
+.home{
+     background-color: #EAEDED;
+}
+
+.banner{
+     object-fit: cover;
+     object-position: 0% 0%; 
+     height: 300px;
+}
+
+/* multiple Carousel */
+
+#content{
+     background-color: white;
+     padding: 0px;
+     margin:20px;
+}
+
+.col-md-3, .col-xs-3, .col-sm-3 {
+     display: inline-block;
+     margin-left: -4px;
+     
+ }
+
+ .col-md-3, .col-xs-3, .col-sm-3 {
+     /* width: 100%; */
+     height: auto;
+ }
+
+ #carousel_control_id{
+      background-color: blue;
+ }
+
+ 
+element.style {
+     width: 18rem;
+ }
+ .card {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     min-width: 0;
+     word-wrap: break-word;
+     background-color: #fff;
+     background-clip: border-box;
+     border: 1px solid rgba(0,0,0,.125);
+     border-radius: .25rem;
+     margin: auto;
+ }
+
+.product_title a{
+     color:black;
+     text-decoration:none;
+}
+
+.product_title a:hover{
+     color:rgb(235, 92, 49);
+     text-decoration:none;
+}
+
+#product_view_img{
+     background-repeat: no-repeat;
+     background-size: cover;
+}
+
+.img-thumbnail{
+     border:0px;
+}
+
+
+/* My Cart */
+.quantity a:hover{
+     color:rgb(235, 92, 49);
+}
+
+.cart_prod_price{
+     float:right;
+     font-weight:bold;
+}
+
+.price_label{
+     float:right;
+}
+
+/* Profile */
+#profile_menu{
+     border-right:solid black 2px ;
+}
+
+/* Order */
+table, th, td {
+     border:1px solid black;
+     text-align:center;
+   }
+
+.blog_thumbnail{
+     height: 250px;
+     object-fit: fill;
+}
+
+/* Search */
+.search_form{
+     width: 450px;
+}

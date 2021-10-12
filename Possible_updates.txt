@@ -1,0 +1,11 @@
+1.Add Discounted Price
+2.Add Saving
+3.Add Saving Percent
+4.Add Filter
+5.Modified Cart Model in one to many ## admin unable to delete product if product added in cart
+6.Add Address Inline Model To Customer/User Model
+7. Add Choice Field for Address state field
+8. Add Order Status Description
+9. Create Admin, Buyer , Seller Profile
+10. Add Dropdown Menu for Dashboard
+11. Add Templates For Password Reset # Imp

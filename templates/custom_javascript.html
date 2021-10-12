@@ -1,0 +1,18 @@
+<script>
+
+ // console.log('working'); 
+
+var dataURL = `/Json/`
+$.ajax({
+    method: 'GET',
+    url: dataURL,
+    success:function(response){
+        // console.log('RESPONSE:', response)
+        // console.log('RESPONSE:', response.length)
+        document.getElementById('cart').innerHTML = response.length;
+    }
+    
+    })
+
+
+</script>

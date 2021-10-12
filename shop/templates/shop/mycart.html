@@ -1,0 +1,76 @@
+
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock title %}
+{% load static %}
+{% load mathfilters %}
+
+{% block body %} 
+
+<div class="container mx-5 mt-5 mb-5">
+    <div class="row">
+        <div class=" col-md-8 " style='border: black solid 1px;'>
+            <h2>Cart</h2>
+            <p class='price_label'>Price</p>
+            <br>
+            <hr>
+            {% if cart %}
+            {% for product in cart %}
+            <div class="row ">
+                <div class="col-xs-1 col-sm-1 col-md-1  " >
+                    <div class="form-check align-middle">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 ">
+                    <img src="{{product.product_name.product_image.url}}" alt=""  class="img-fluid img-thumbnail shadow-sm" width='150px' heigth='150px' >
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 ">
+                    <h3>{{product.product_name.product_name}}</h3>
+                    <p>{{product.product_name.desc}}</p>
+
+                    <div class="my-3 quantity">
+                        <label for="quantity">Quantity:</label>
+                        <a class="minus-cart btn" pid='{{product.product.id}}' href="{% url 'quantity_minus'  product.id %}"><i class="fas fa-minus-square fa-lg"></i></a>
+
+                        <span id="quantity">{{product.quantity}}</span>
+
+                        <a class="plus-cart btn" pid='{{product.product.id}}' href="{% url 'quantity_plus'  product.id %}"><i class="fas fa-plus-square fa-lg"></i></a>
+                    </div> 
+                    <div>
+                        <a href="{% url 'remove_cart' product.id %}" class='btn btn-secondary'>Remove Item</a>
+                         <span class='cart_prod_price'>₹ {{product.product_name.price|mul:product.quantity}}</span>
+                    </div>
+                    
+                </div>
+                <hr class='mt-3'>
+            </div>
+            {% endfor %}
+            <a href="{% url 'clear_cart' %}" class='btn btn-danger my-1'> Clear Cart </a>
+            {% else %}
+            <div class="alert alert-info">
+                <strong>Your Cart is Empty!!</strong>
+            </div>
+            {% endif %}
+        </div>
+        
+        {% if cart %}
+        <div class="col-md-4 px-2 " style='border: black solid 1px;'>
+            <h2>The Total Amount of</h2>
+            <br>
+            <hr>
+            <span>Amount </span> <span style='float:right'>₹ {{tot_price}} </span><br>
+            <span>Shipping </span> <span style='float:right'>₹ 70 </span>
+            <hr>
+            <span style="font-weight:bold;">Total (including VAT) ({{cart|length}} items)  </span><span style='float:right; font-weight:bold; '>₹ {{tot_price|add:70}}</span>
+            <div class="d-grid py-2"><a href="{% url 'checkout' %}" class="btn btn-primary">Proceed to Buy</a></div>
+        </div>
+        {% else %}
+        <div class="col-md-4 px-2 ">
+            
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock body %}
+

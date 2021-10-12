@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}CheckOut{% endblock title %}
+{% load static %}
+{% load mathfilters %}
+
+{% block body %} 
+
+
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-6 col-xs-6 col-sm-6 px-2">
+            <h2>Ordered Summary</h2>
+            <hr>
+            {% if cart %}
+            {% for i in cart %}
+                <div>
+                    <span>{{i.product_name}}</span>
+                    <span class='badge bg-primary'>{{i.quantity}}</span>
+                    <span style='float:right;'> ₹ {{i.product_name.price|mul:i.quantity}}</span>
+                </div>
+            {% endfor %}
+            <hr>
+            <div>
+                <span style="font-weight:bold;">Total_Amount </span> 
+                <span style='float:right'>
+                {{tot_price}} + 70(Delivery Charge) = 
+                <span  style="font-weight:bold;float:right;"> ₹ {{tot_price|add:70}}</span></span> 
+                
+            </div>
+            {% else %}
+            <div class="alert alert-warning">
+                Empty Cart
+            </div>
+            {% endif %}
+
+        </div>
+        <div class="col-md-5 col-xs-5 col-sm-5 px-2 offset-1">
+            <h2>Select Shipping Address</h2>
+            <hr>
+            {% if addresses %}
+                {% for i in addresses %}
+                <div class="row">
+                    <div class="col-md-1">
+                        <input class="form-check-input" name='{{i.id}}' type="checkbox" value="" id="flexCheckDefault">
+                    </div>
+                    <div class="col-md-10 offset-1">
+                        <span>{{i.address}}</span><br>
+                        <span>Mob_No: {{i.phone_number}}</span><br>
+                        <span>City: {{i.city}}</span><br>
+                        <span>State: {{i.state}}</span><br>
+                        <span>Zip: {{i.zip}}</span>
+                    
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+                {% if cart %}
+                <a href="{% url 'order' %}" class='btn btn-success'>Place Order</a>
+                {% endif %}
+            {% else %}
+                <div class="alert alert-info">
+                No Address Added yet!
+                </div>
+                <a href="{% url 'add_address' %}" class='btn btn-secondary'>Add Address</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+

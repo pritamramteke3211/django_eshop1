@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Address{% endblock title %}
+{% load static %}
+
+{% block css %}{{block.super}} <link rel="stylesheet" href="{% static 'project/css/style.css' %}"> {% endblock css %}
+
+{% block body %} 
+
+<div class='container mt-5 mb-5'>
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4 px-2">
+            <a href="{% url 'dashboard' %}">Profile</a><br>
+            <a href="{% url 'address' %}" class='btn btn-primary'>Address</a>
+        </div>
+        <div class="col-md-7 col-sm-7 col-xs-7 px-2 offset-1">
+            <h2>Addresses</h2>
+            {% for i in addresses %}
+                <hr>
+                <span>{{i.address}}</span><br>
+                <span>Mob_No: {{i.phone_number}}</span><br>
+                <span>City: {{i.city}}</span><br>
+                <span>State: {{i.state}}</span><br>
+                <span>Zip: {{i.zip}}</span>
+
+                <div>
+                    <a href="{% url 'delete_address' i.id %}" class='btn btn-danger'>Delete Address</a>
+                </div>
+                
+
+            {% endfor %}
+            <hr>
+            <a href="{% url 'add_address' %}" class='btn btn-info'>Add Address</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock body %}
+

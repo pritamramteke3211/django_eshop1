@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}SignUp{% endblock title %}
+{% load static %}
+
+{% block navbar %} {% include 'navbar.html' %} {% endblock navbar %}
+
+
+{% block body %} 
+
+
+<br>
+{% comment %} User Login Form {% endcomment %}
+    <div class="container  mx-auto mt-5 mb-5">
+        <div class="alert alert-success">
+            <strong>User Logout Successfully</strong>
+        </div>
+        <a href="{% url 'home' %}" class='btn btn-success'>Home</a>
+        <a href="{% url 'login' %}" class='btn btn-info'>Login</a>
+        
+    </div>
+{% endblock body %}
+

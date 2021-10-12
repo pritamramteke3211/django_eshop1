@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock title %}
+{% load static %}
+
+
+{% block body %} 
+
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <h2>Search Result as Follows</h2>
+            {% if products %}
+            <span>{{products|length}} results found for <em>{{query}}</em></span>
+            {% for i in products %}
+            <hr>
+            <div class="row px-2">
+                <div class="col-md-4">
+                    <a href="{% url 'productview' i.product_id %}">
+                        <img src="{{i.product_image.url}}" alt="" class='blog_thumbnail '>
+                    </a>
+                </div>
+                <div class="col-md-8 px-5 py-5">
+                    <h3>{{i.product_name}}</h3>
+                    <span>{{i.category}}</span><br>
+                    <span style='font-weight:bold;'>₹ {{i.price}}</span>
+                    <p>{{i.desc}}</p>
+                    <a class='btn btn-outline-danger cart me-2' id="pr{{i.product_id}}" href="{% url 'add_to_cart' i.product_id %}" >Add to Cart</a>
+
+                    <a class='btn btn-outline-success cart' id="pr{{i.product_id}}" href="{% url 'buy_now' i.product_id %}" >Buy Now</a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="alert alert-warning">
+                <strong>No product matching to search </strong>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+
